@@ -11,8 +11,9 @@ def grab(loginname,password):
 	options.add_argument('headless')
 	options.add_argument('no-sandbox')
 	options.add_argument('disable-dev-shm-usage')
-	options.binary_location='./chromedriver'
-	driver = webdriver.Chrome(options = options)
+	#executable binary of chromedriver
+	chrome_driver = './chromedriver'
+	driver = webdriver.Chrome(executable_path = chrome_driver,options = options)
 	# driver = webdriver.Chrome()
 	print('[',time.ctime(),']','start refresh resume......')
 	try:
