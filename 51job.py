@@ -4,15 +4,23 @@
 from selenium import webdriver
 from time import sleep
 import os,sys
-import time
+import time,platform
 
-def grab(loginname,password):
+def grab(loginname,password,system_os):
+	#executable binary of chromedriver
+	if system_os == 'Windows':
+		chrome_driver = './chromedriver.exe'
+	elif system_os == 'linux':
+		chrome_driver = './chromedriver'
+	elif system_os == 'Darwin':
+		chrome_driver = './chromedriver_darwin'
+	else :
+		print('Not surpported OS!')
 	options = webdriver.ChromeOptions()
 	options.add_argument('headless')
 	options.add_argument('no-sandbox')
 	options.add_argument('disable-dev-shm-usage')
-	#executable binary of chromedriver
-	chrome_driver = './chromedriver'
+	# chrome_driver = './chromedriver'
 	driver = webdriver.Chrome(executable_path = chrome_driver,options = options)
 	# driver = webdriver.Chrome()
 	print('[',time.ctime(),']','start refresh resume......')
@@ -33,4 +41,5 @@ if __name__ == '__main__':
 		print('insufficient arguments, need 2, actually {}'.format(len(sys.argv) - 1))
 		print('Usage:python ' + sys.argv[0] + ' <loginname> <password>')
 	else:
-		grab(sys.argv[1],sys.argv[2])
+		sys_os = platform.system()
+		grab(sys.argv[1],sys.argv[2],sys_os)
