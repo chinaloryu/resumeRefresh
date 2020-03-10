@@ -10,7 +10,7 @@ def grab(loginname,password,system_os):
 	#executable binary of chromedriver
 	if system_os == 'Windows':
 		chrome_driver = './chromedriver.exe'
-	elif system_os == 'linux':
+	elif system_os == 'Linux':
 		chrome_driver = './chromedriver'
 	elif system_os == 'Darwin':
 		chrome_driver = './chromedriver_darwin'
