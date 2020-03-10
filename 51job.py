@@ -9,7 +9,7 @@ import time
 def grab(loginname,password):
 	options = webdriver.ChromeOptions()
 	options.add_argument('headless')
-	options.binary_location=r'./chromedriver'
+	options.binary_location='/usr/bin/chromedriver'
 	driver = webdriver.Chrome(options = options)
 	# driver = webdriver.Chrome()
 	print('[',time.ctime(),']','start refresh resume......')
