@@ -6,7 +6,7 @@ from time import sleep
 import os,sys
 import time,platform
 
-def grab(loginname,password,system_os):
+def refresh(loginname,password,system_os):
 	#executable binary of chromedriver
 	if system_os == 'Windows':
 		chrome_driver = './chromedriver.exe'
@@ -42,4 +42,4 @@ if __name__ == '__main__':
 		print('Usage:python ' + sys.argv[0] + ' <loginname> <password>')
 	else:
 		sys_os = platform.system()
-		grab(sys.argv[1],sys.argv[2],sys_os)
+		refresh(sys.argv[1],sys.argv[2],sys_os)
