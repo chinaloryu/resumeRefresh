@@ -66,6 +66,6 @@ if __name__ == '__main__':
 		headers = {'Content-Type': 'application/json;charset=utf-8'}
 		api_url = "https://oapi.dingtalk.com/robot/send?access_token=%s" % sys.argv[4]
 		if 0 < rtn:
-			sendMsg('[' + time.ctime() + ']' + 'resume refresh failed.', sys.argv[3])
+			sendMsg('[' + time.ctime() + ']' + str(sys.argv[1]) +'refresh failed.', sys.argv[3])
 		else:
-			sendMsg('[' + time.ctime() + ']' + 'resume refresh success.', sys.argv[3])
+			sendMsg('[' + time.ctime() + ']' + str(sys.argv[1]) +'refresh success.', sys.argv[3])
