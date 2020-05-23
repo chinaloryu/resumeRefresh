@@ -19,7 +19,7 @@ def sendMsg(msg, phone_num):
 		},
 		"markdown": {
 			"title": 'resume refresh',
-			"text": "![](http://www.officedoyen.com/uploads/allimg/150617/1-15061G00245S1.jpg)"+msg
+			"text": "![](http://www.officedoyen.com/uploads/allimg/150617/1-15061G00245S1.jpg)"+msg+"@"+phone_num
 		}
 	}
 	print(requests.post(api_url, json.dumps(json_text), headers=headers).content)
