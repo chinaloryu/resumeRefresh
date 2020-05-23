@@ -10,15 +10,16 @@ import requests, json
 
 def sendMsg(msg, phone_num):
 	json_text = {
-		"msgtype": "text",
+		"msgtype": "markdown",
 		"at": {
 			"atMobiles": [
 			phone_num
 			],
 			"isAtAll": False
 		},
-		"text": {
-			"content": msg
+		"markdown": {
+			"title": 'resume refresh',
+			"text": "![](http://www.officedoyen.com/uploads/allimg/150617/1-15061G00245S1.jpg)"+msg
 		}
 	}
 	print(requests.post(api_url, json.dumps(json_text), headers=headers).content)
