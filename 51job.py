@@ -19,7 +19,7 @@ def sendMsg(msg, phone_num):
 		},
 		"markdown": {
 			"title": 'resume refresh',
-			"text": "![](http://p.geitu.net/400/7jlszp.jpg)"+msg+" @"+phone_num
+			"text": "![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.theladders.com%2Fcareer-advice%2Fcareer-path-dream-job&psig=AOvVaw0IG7mop6c8gFKsqByKIjbE&ust=1612959173588000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD3l63j3O4CFQAAAAAdAAAAABAF)"+msg+" @"+phone_num
 		}
 	}
 	print(requests.post(api_url, json.dumps(json_text), headers=headers).content)
