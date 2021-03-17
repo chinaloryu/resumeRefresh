@@ -44,7 +44,7 @@ def refresh(loginname, password, system_os):
 	# driver = webdriver.Chrome()
 	print('[', time.ctime(), ']', 'start refresh resume......')
 	try:
-		driver.get('http://login.51job.com')
+		driver.get('https://login.51job.com/login.php?loginway=0&isjump=0&lang=c&from_domain=i&url=')
 		driver.find_element_by_id('loginname').send_keys(loginname)
 		driver.find_element_by_id('password').send_keys(password)
 		driver.find_element_by_id('login_btn').click()
