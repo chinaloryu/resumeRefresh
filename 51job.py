@@ -45,7 +45,7 @@ def refresh(loginname, password, system_os):
 	print('[', time.ctime(), ']', 'start refresh resume......')
 	try:
 		driver.get('https://login.51job.com/login.php?loginway=0&isjump=0&lang=c&from_domain=i&url=')
-	except：
+	except:
 		print('>>>>>>>>>>>>>\nlogin page failed!')
 	try:
 		driver.find_element_by_id('loginname').send_keys(loginname)
