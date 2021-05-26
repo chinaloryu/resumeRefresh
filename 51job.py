@@ -45,26 +45,32 @@ def refresh(loginname, password, system_os):
 	print('[', time.ctime(), ']', 'start refresh resume......')
 	try:
 		driver.get('https://login.51job.com/login.php?loginway=0&isjump=0&lang=c&from_domain=i&url=')
+		print('>>>>>>>get login page')
 	except:
 		print('>>>>>>>>>>>>>\nlogin page failed!')
 	try:
 		driver.find_element_by_id('loginname').send_keys(loginname)
+		print('>>>>>>>>>>>>>>>send username')
 	except:
 		print('>>>>>>>>>>>>>\nfind login name text frame failed!')
 	try:
 		driver.find_element_by_id('password').send_keys(password)
+		print('>>>>>>>>>>>>>send password')
 	except:
 		print('>>>>>>>>>>>>>\nfind password text frame failed!')
 	try:
 		driver.find_element_by_id('login_btn').click()
+		print('>>>>>>>>>>>>>click login button')
 	except:
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
 		driver.get('http://i.51job.com/userset/my_51job.php')
+		print('>>>>>>>>>>>>>login to profile')
 	except:
 		print('>>>>>>>>>>>>>\nlogin to user profile failed!')
 	try:
 		driver.find_element_by_xpath("//span[text()=\"刷新\"]").click()
+		print('>>>>>>>>>>>>>refresh button')
 		print('[', time.ctime(), ']', 'refresh success.')
 		return 0
 	except:
