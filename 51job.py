@@ -58,7 +58,7 @@ def refresh(loginname, password, system_os):
 	except:
 		print('>>>>>>>>>>>>>\nfind password text frame failed!')
 	try:
-		driver.find_element_by_id('login_btn').click()
+		driver.find_element_by_id('login_btn_withPwd').click()
 	except:
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
