@@ -37,9 +37,9 @@ def refresh(loginname, password, system_os):
 	else:
 		print('Not surpported OS!')
 	options = webdriver.ChromeOptions()
-	# options.add_argument('headless')
+	options.add_argument('headless')
 	options.add_argument('window-size=1920x1080')
-	# options.add_argument('start-maximized')
+	options.add_argument('start-maximized')
 	options.add_argument('no-sandbox')
 	options.add_argument('disable-dev-shm-usage')
 	# chrome_driver = './chromedriver'
@@ -48,6 +48,7 @@ def refresh(loginname, password, system_os):
 	print('[', time.ctime(), ']', 'start refresh resume......')
 	try:
 		driver.get('https://login.51job.com/login.php?loginway=0&isjump=0&lang=c&from_domain=i&url=')
+		sleep(random.uniform(0.5, 2.0))
 	except:
 		print('>>>>>>>>>>>>>\nlogin page failed!')
 	try:
@@ -67,11 +68,11 @@ def refresh(loginname, password, system_os):
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
 		driver.get('http://i.51job.com/userset/my_51job.php')
+		sleep(random.uniform(0.5, 2.0))
 	except:
 		print('>>>>>>>>>>>>>\nlogin to user profile failed!')
 	try:
 		print('>>>>>>>>>>>>>refresh button')
-		print(driver.find_elements_by_xpath("//span[text()='刷新']")[0])
 		driver.find_elements_by_xpath("//span[text()='刷新']")[0].click()
 		print('[', time.ctime(), ']', 'refresh success.')
 		return 0
