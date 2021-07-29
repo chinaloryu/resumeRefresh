@@ -6,6 +6,7 @@ from time import sleep
 import os, sys
 import time, platform
 import requests, json
+import random
 
 
 def sendMsg(msg, phone_num):
@@ -36,9 +37,9 @@ def refresh(loginname, password, system_os):
 	else:
 		print('Not surpported OS!')
 	options = webdriver.ChromeOptions()
-	options.add_argument('headless')
+	# options.add_argument('headless')
 	options.add_argument('window-size=1920x1080')
-	options.add_argument('start-maximized')
+	# options.add_argument('start-maximized')
 	options.add_argument('no-sandbox')
 	options.add_argument('disable-dev-shm-usage')
 	# chrome_driver = './chromedriver'
@@ -51,15 +52,17 @@ def refresh(loginname, password, system_os):
 		print('>>>>>>>>>>>>>\nlogin page failed!')
 	try:
 		driver.find_element_by_id('loginname').send_keys(loginname)
+		sleep(random.uniform(0.5,2.0))
 	except:
 		print('>>>>>>>>>>>>>\nfind login name text frame failed!')
 	try:
 		driver.find_element_by_id('password').send_keys(password)
+		sleep(random.uniform(0.5,2.0))
 	except:
 		print('>>>>>>>>>>>>>\nfind password text frame failed!')
 	try:
 		driver.find_element_by_id('login_btn_withPwd').click()
-		sleep(2)
+		sleep(random.uniform(0.5,2.0))
 	except:
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
