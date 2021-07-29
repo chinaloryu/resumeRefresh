@@ -66,8 +66,8 @@ def refresh(loginname, password, system_os):
 	except:
 		print('>>>>>>>>>>>>>\nlogin to user profile failed!')
 	try:
-		driver.find_element_by_xpath("//span[text()=\"刷新\"]").click()
 		print('>>>>>>>>>>>>>refresh button')
+		driver.find_elements_by_xpath("//span[text()='刷新']")[0].click()
 		print('[', time.ctime(), ']', 'refresh success.')
 		return 0
 	except:
