@@ -38,7 +38,7 @@ def refresh(loginname, password, system_os):
 	options = webdriver.ChromeOptions()
 	options.add_argument('headless')
 	options.add_argument('window-size=1920x1080')
-	options.add_argument('start-maximized')
+	# options.add_argument('start-maximized')
 	options.add_argument('no-sandbox')
 	options.add_argument('disable-dev-shm-usage')
 	# chrome_driver = './chromedriver'
@@ -67,6 +67,7 @@ def refresh(loginname, password, system_os):
 		print('>>>>>>>>>>>>>\nlogin to user profile failed!')
 	try:
 		print('>>>>>>>>>>>>>refresh button')
+		print(driver.find_elements_by_xpath("//span[text()='刷新']")[0])
 		driver.find_elements_by_xpath("//span[text()='刷新']")[0].click()
 		print('[', time.ctime(), ']', 'refresh success.')
 		return 0
