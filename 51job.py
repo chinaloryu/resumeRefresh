@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# Author loryu
+# Author loryu@4yutech.com
 from selenium import webdriver
 from time import sleep
 import os, sys
