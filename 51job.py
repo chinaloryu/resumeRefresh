@@ -67,6 +67,10 @@ def refresh(loginname, password, system_os):
 	except:
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
+		driver.refresh()
+	except:
+		print('>>>>>>>>>>>>>\nbrowser refresh failed!')
+	try:
 		driver.get('http://i.51job.com/userset/my_51job.php')
 		sleep(random.uniform(0.5, 2.0))
 	except:
