@@ -29,11 +29,11 @@ def sendMsg(msg, phone_num):
 def refresh(loginname, password, system_os):
 	# executable binary of chromedriver
 	if system_os == 'Windows':
-		chrome_driver = '../bin/chromedriver.exe'
+		chrome_driver = './bin/chromedriver.exe'
 	elif system_os == 'Linux':
-		chrome_driver = '../bin/chromedriver'
+		chrome_driver = './bin/chromedriver'
 	elif system_os == 'Darwin':
-		chrome_driver = '../bin/chromedriver_darwin'
+		chrome_driver = './bin/chromedriver_darwin'
 	else:
 		print('Not surpported OS!')
 	options = webdriver.ChromeOptions()
