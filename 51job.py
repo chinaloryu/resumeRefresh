@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 # Author loryu@4yutech.com
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
 import os, sys
 import time, platform
 import requests, json
 import random,base64,os
+import numpy,cv2
 
 
 def sendMsg(msg, phone_num):
@@ -75,7 +77,7 @@ def refresh(loginname, password, system_os):
 	JS = 'return document.getElementsByClassName("geetest_canvas_bg geetest_absolute")[0].toDataURL("image/png");'
 	bg_img_info = driver.execute_script(JS)
 	bg_img_base64 = bg_img_info.split(',')[1]
-	bg_img_bytes = base64.b64_decode(bg_img_base64)
+	bg_img_bytes = base64.b64decode(bg_img_base64)
 	with open ('./img/geetest_bg.png','wb') as f:
 		f.write(bg_img_bytes)
 
@@ -83,10 +85,17 @@ def refresh(loginname, password, system_os):
 	JS = 'return document.getElementsByClassName("geetest_canvas_slice geetest_absolute")[0].toDataURL("image/png");'
 	fg_img_info = driver.execute_script(JS)
 	fg_img_base64 = fg_img_info.split(',')[1]
-	fg_img_bytes = base64.b64_decode(fg_img_base64)
+	fg_img_bytes = base64.b64decode(fg_img_base64)
 	with open('./img/geetest_fg.png', 'wb') as f:
 		f.write(fg_img_bytes)
-	
+
+	bg = cv2.cvtColor(cv2.imread('./img/geetest_bg.png'), cv2.COLOR_BGR2GRAY)
+	fg = cv2.cvtColor(cv2.imread('./img/geetest_fg.png'), cv2.COLOR_BGR2GRAY)
+	fg = fg[fg.any(1)]
+	result = cv2.matchTemplate(bg, fg, cv2.TM_CCOEFF_NORMED)
+	x, y = numpy.unravel_index(numpy.argmax(result), result.shape)
+	btn = driver.find_element_by_xpath("//div[@class='geetest_slider_button']")
+	ActionChains(driver).drag_and_drop_by_offset(btn, xoffset=x * 1.4, yoffset=0).perform()
 	#clean up
 	os.remove('./img/geetest_bg.png')
 	os.remove('./img/geetest_fg.png')
