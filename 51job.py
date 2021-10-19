@@ -6,7 +6,7 @@ from time import sleep
 import os, sys
 import time, platform
 import requests, json
-import random
+import random,base64,os
 
 
 def sendMsg(msg, phone_num):
@@ -69,6 +69,28 @@ def refresh(loginname, password, system_os):
 	try:
 		driver.find_element_by_id('login_btn_withPwd').click()
 		sleep(random.uniform(0.5,2.0))
+	#passthrough geetest verification using opencv
+	#save backgroud image as local image file
+	bg_img = driver.find_element_by_xpath("//canvas[@class='geetest_canvas_bg geetest_absolute']")
+	JS = 'return document.getElementsByClassName("geetest_canvas_bg geetest_absolute")[0].toDataURL("image/png");'
+	bg_img_info = driver.execute_script(JS)
+	bg_img_base64 = bg_img_info.split(',')[1]
+	bg_img_bytes = base64.b64_decode(bg_img_base64)
+	with open ('./img/geetest_bg.png','wb') as f:
+		f.write(bg_img_bytes)
+
+	fg_img = driver.find_element_by_xpath("//canvas[@class='geetest_canvas_slice geetest_absolute']")
+	JS = 'return document.getElementsByClassName("geetest_canvas_slice geetest_absolute")[0].toDataURL("image/png");'
+	fg_img_info = driver.execute_script(JS)
+	fg_img_base64 = fg_img_info.split(',')[1]
+	fg_img_bytes = base64.b64_decode(fg_img_base64)
+	with open('./img/geetest_fg.png', 'wb') as f:
+		f.write(fg_img_bytes)
+	
+	#clean up
+	os.remove('./img/geetest_bg.png')
+	os.remove('./img/geetest_fg.png')
+
 	except:
 		print('>>>>>>>>>>>>>\nfind login button failed!')
 	try:
